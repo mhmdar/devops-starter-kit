@@ -1,0 +1,17 @@
+services:
+  api:
+    build: ./menu-api
+    image: menu-api:lab
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      CAFE_NAME: "North Gate Cafe"
+  web:
+    image: nginx:alpine
+    ports:
+      - "8088:80"
+    volumes:
+      - ./web:/usr/share/nginx/html:ro
+    depends_on:
+      - api

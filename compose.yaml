@@ -1,0 +1,10 @@
+services:
+  drillbook:
+    build: .
+    image: drillbook:lab
+    ports:
+      - "8431:8431"
+    environment:
+      PORT: "8431"
+      HOSTNAME: "0.0.0.0"
+    restart: unless-stopped
